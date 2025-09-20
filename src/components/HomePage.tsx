@@ -259,7 +259,7 @@ export default function HomePage({ onPageChange }: HomePageProps) {
               🔬 Introduction
             </Badge>
             <h2 className="text-4xl md:text-6xl mb-8 gradient-text">
-              Meet Hy-DWTS™
+              Hy-DWTS™
             </h2>
           </motion.div>
           

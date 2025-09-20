@@ -12,6 +12,8 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    designation: '',
+    organization: '',
     phone: '',
     message: ''
   });
@@ -28,7 +30,7 @@ export default function ContactPage() {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.organization || !formData.phone || !formData.message) {
       toast.error('Please fill in all required fields');
       return;
     }
@@ -40,6 +42,13 @@ export default function ContactPage() {
       return;
     }
 
+    // Phone validation
+    const phoneRegex = /^[0-9+\-\s()]{10,}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error('Please enter a valid phone number');
+      return;
+    }
+
     // Simulate form submission
     toast.success('Thank you for your message! We\'ll get back to you soon.');
     
@@ -47,6 +56,8 @@ export default function ContactPage() {
     setFormData({
       name: '',
       email: '',
+      designation: '',
+      organization: '',
       phone: '',
       message: ''
     });
@@ -119,6 +130,7 @@ export default function ContactPage() {
                         onChange={handleInputChange}
                         placeholder="Your full name"
                         required
+                        className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white"
                       />
                     </div>
                     <div className="space-y-2">
@@ -131,12 +143,39 @@ export default function ContactPage() {
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
                         required
+                        className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="designation">Designation</Label>
+                      <Input
+                        id="designation"
+                        name="designation"
+                        value={formData.designation}
+                        onChange={handleInputChange}
+                        placeholder="Your role (optional)"
+                        className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="organization">Organization *</Label>
+                      <Input
+                        id="organization"
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleInputChange}
+                        placeholder="Your organization name"
+                        required
+                        className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white"
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone (Optional)</Label>
+                    <Label htmlFor="phone">Phone Number *</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -144,6 +183,8 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 98765 43210"
+                      required
+                      className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white"
                     />
                   </div>
                   
@@ -157,6 +198,7 @@ export default function ContactPage() {
                       placeholder="Tell us about your interest in our work or how you'd like to get involved..."
                       rows={6}
                       required
+                      className="border-2 border-gray-300 rounded-md px-4 py-2 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-white resize-none"
                     />
                   </div>
                   
@@ -196,37 +238,16 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Office Hours */}
-            <Card className="p-6">
-              <CardContent>
-                <h3 className="text-lg mb-4">Office Hours</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Call to Action */}
             <Card className="p-6 bg-primary text-white">
               <CardContent>
                 <h3 className="text-lg mb-3">Ready to Make a Difference?</h3>
                 <p className="mb-4 text-primary-foreground/90">
-                  Join hundreds of volunteers and supporters who are working towards 
-                  cleaner water for all communities.
+                  Join our network of partners who are committed to creating a sustainable 
+                  and clean future for all communities.
                 </p>
                 <Button variant="secondary" className="w-full">
-                  Become a Volunteer
+                  Become a Clean Future Partner
                 </Button>
               </CardContent>
             </Card>
@@ -234,7 +255,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Map Section */}
+      {/* Map Section 
       <section className="px-4 mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -248,14 +269,13 @@ export default function ContactPage() {
                 <div className="text-center text-muted-foreground">
                   <MapPin className="h-12 w-12 mx-auto mb-2" />
                   <p>Interactive Map</p>
-                  <p className="text-sm">EcoShudh Office Location</p>
-                  <p className="text-sm">Mumbai, Maharashtra, India</p>
                 </div>
               </div>
             </Card>
           </motion.div>
         </div>
       </section>
+      */}
     </div>
   );
 }
