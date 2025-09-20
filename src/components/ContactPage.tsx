@@ -202,7 +202,13 @@ export default function ContactPage() {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button 
+                    type="submit" 
+                    variant="default"
+                    style={{ backgroundColor: '#14532d' }}
+                    className="w-full hover:opacity-90 text-white font-semibold" 
+                    size="lg"
+                  >
                     <Send className="h-4 w-4 mr-2" />
                     Send Message
                   </Button>
