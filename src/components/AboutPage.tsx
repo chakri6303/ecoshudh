@@ -17,18 +17,18 @@ export default function AboutPage() {
       initials: "SR",
       details: "With over 15 years of experience in environmental technology, Srinivas leads EcoShudh's mission to revolutionize wastewater treatment. His vision for sustainable solutions has positioned the company as a leader in eco-friendly water management."
     },
-    {
-      name: "Mr. Gowtham Tadepalli", 
-      position: "Chief Operating Officer",
-      initials: "GT",
-      details: "Gowtham brings exceptional operational expertise to EcoShudh, ensuring every project delivers maximum efficiency. His commitment to operational excellence has streamlined our processes and enhanced customer satisfaction across all sectors."
-    },
-    {
-      name: "Ms. Aarathi Vandanapu",
-      position: "Chief Growth Officer",
-      initials: "AV",
-      details: "Aarathi spearheads EcoShudh's expansion strategy, identifying new opportunities and fostering partnerships. Her innovative approach to market development has accelerated our growth and expanded our reach to new communities worldwide."
-    }
+    // {
+    //   name: "Mr. Gowtham Tadepalli", 
+    //   position: "Chief Operating Officer",
+    //   initials: "GT",
+    //   details: "Gowtham brings exceptional operational expertise to EcoShudh, ensuring every project delivers maximum efficiency. His commitment to operational excellence has streamlined our processes and enhanced customer satisfaction across all sectors."
+    // },
+    // {
+    //   name: "Ms. Aarathi Vandanapu",
+    //   position: "Chief Growth Officer",
+    //   initials: "AV",
+    //   details: "Aarathi spearheads EcoShudh's expansion strategy, identifying new opportunities and fostering partnerships. Her innovative approach to market development has accelerated our growth and expanded our reach to new communities worldwide."
+    // }
   ];
 
   return (

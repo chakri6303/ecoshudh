@@ -41,13 +41,21 @@ export default function AnimatedBackground() {
       <div className="absolute inset-0 opacity-30">
         <svg className="w-full h-full" viewBox="0 0 2000 1000">
           <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3d2a14" stopOpacity="0.8" />
+              <stop offset="15%" stopColor="#4a3621" stopOpacity="0.7" />
+              <stop offset="50%" stopColor="#6b7280" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.4" />
             </linearGradient>
+            <pattern id="dirtyPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="1" fill="#2c1810" opacity="0.4" />
+              <circle cx="5" cy="5" r="1.5" fill="#241409" opacity="0.3" />
+              <circle cx="15" cy="15" r="1" fill="#1a0f06" opacity="0.5" />
+            </pattern>
           </defs>
           
           <motion.path
+            className="wave-path"
             d="M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z"
             fill="url(#gradient1)"
             animate={{
@@ -61,6 +69,23 @@ export default function AnimatedBackground() {
               duration: 8,
               repeat: Infinity
             }}
+          />
+          <motion.path
+            d="M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z"
+            fill="url(#dirtyPattern)"
+            animate={{
+              d: [
+                "M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z",
+                "M -200 450 Q 300 350 1000 450 T 2200 450 L 2200 1000 L -200 1000 Z",
+                "M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z"
+              ]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity
+            }}
+            style={{ mixBlendMode: 'multiply' }}
+            opacity={0.3}
           />
         </svg>
       </div>
