@@ -39,7 +39,7 @@ export default function AnimatedBackground() {
       
       {/* Animated Mesh */}
       <div className="absolute inset-0 opacity-30">
-        <svg className="w-full h-full" viewBox="0 0 1000 1000">
+        <svg className="w-full h-full" viewBox="0 0 2000 1000">
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.3" />
@@ -48,13 +48,13 @@ export default function AnimatedBackground() {
           </defs>
           
           <motion.path
-            d="M 0 400 Q 250 300 500 400 T 1000 400 L 1000 1000 L 0 1000 Z"
+            d="M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z"
             fill="url(#gradient1)"
             animate={{
               d: [
-                "M 0 400 Q 250 300 500 400 T 1000 400 L 1000 1000 L 0 1000 Z",
-                "M 0 450 Q 250 350 500 450 T 1000 350 L 1000 1000 L 0 1000 Z",
-                "M 0 400 Q 250 300 500 400 T 1000 400 L 1000 1000 L 0 1000 Z"
+                "M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z",
+                "M -200 450 Q 300 350 1000 450 T 2200 450 L 2200 1000 L -200 1000 Z",
+                "M -200 400 Q 300 300 1000 400 T 2200 400 L 2200 1000 L -200 1000 Z"
               ]
             }}
             transition={{
