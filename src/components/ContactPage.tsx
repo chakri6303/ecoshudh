@@ -5,6 +5,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -26,7 +27,7 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -49,18 +50,40 @@ export default function ContactPage() {
       return;
     }
 
-    // Simulate form submission
-    toast.success('Thank you for your message! We\'ll get back to you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      designation: '',
-      organization: '',
-      phone: '',
-      message: ''
-    });
+    try {
+      // Replace these with your actual EmailJS credentials
+      const templateParams = {
+        to_email: 'chakripclogin@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        designation: formData.designation,
+        organization: formData.organization,
+        phone: formData.phone,
+        message: formData.message
+      };
+
+      await emailjs.send(
+        'service_sf5k28m', // EmailJS service ID
+        'template_im8ht5l', // EmailJS template ID
+        templateParams,
+        'QEUUwPtEijXTGfztZ' // Replace with your EmailJS public key
+      );
+
+      toast.success('Thank you for your message! We\'ll get back to you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        designation: '',
+        organization: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error('Failed to send message. Please try again later.');
+    }
   };
 
   const contactInfo = [
